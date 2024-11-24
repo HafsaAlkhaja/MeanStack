@@ -1,0 +1,21 @@
+{
+  "extends": "../tsconfig.base.json",  
+  "compilerOptions": {
+    "declaration": true,
+    "composite": true,
+    "outDir": "../dist",  
+    "module": "CommonJS", 
+    "types": ["node"],  
+    "emitDecoratorMetadata": true,  
+    "experimentalDecorators": true,  
+    "target": "es2021" 
+  },
+  "include": [
+    "src/**/*.ts" 
+  ],
+  "exclude": [
+    "jest.config.ts", 
+    "src/**/*.spec.ts",
+    "src/**/*.test.ts"
+  ]
+}

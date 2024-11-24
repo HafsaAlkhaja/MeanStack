@@ -1,0 +1,27 @@
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">Name</label>
+    <input id="name" formControlName="name" required />
+  </div>
+  
+  <div>
+    <label for="email">Email</label>
+    <input id="email" formControlName="email" required />
+    <!-- Optional Chaining to avoid errors if the control is null -->
+    <div *ngIf="signupForm.get('email')?.hasError('email')">Please enter a valid email</div>
+  </div>
+
+  <div>
+    <label for="password">Password</label>
+    <input id="password" type="password" formControlName="password" required />
+    <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched" class="error">
+      Password is required and must be at least 6 characters.
+    </div>
+    <div *ngIf="signupForm.get('password')?.hasError('required')">Password is required</div>
+    <div *ngIf="signupForm.get('password')?.hasError('minlength')">Password must be at least 6 characters</div>
+  </div>
+
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+  <button type="submit" [disabled]="signupForm.invalid">Sign Up</button>
+</form>

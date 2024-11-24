@@ -1,0 +1,22 @@
+<!-- Navigation bar -->
+<nav class="navbar">
+  <div class="navbar-container">
+    <a routerLink="/" class="navbar-logo">Testing</a>
+
+  
+    <ul *ngIf="!isAuthenticated" class="navbar-links">
+      <li><a routerLink="/login" class="navbar-link" routerLinkActive="active">Login</a></li>
+      <li><a routerLink="/signup" class="navbar-link" routerLinkActive="active">Sign Up</a></li>
+    </ul>
+
+  
+    <ul *ngIf="isAuthenticated" class="navbar-links">
+      <li><a routerLink="/" class="navbar-link" routerLinkActive="active">Home</a></li>
+      <li><a routerLink="/about" class="navbar-link" routerLinkActive="active">About</a></li>
+      <li><a href="javascript:void(0)" class="navbar-link" (click)="logout()">Sign Out</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<router-outlet></router-outlet>
